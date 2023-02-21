@@ -12,7 +12,7 @@ export default function Mint() {
     const [amountToMint, setAmountToMint] = useState(1)
     const price = 42 //CANTO
     const supply = 4200
-    const [formattedBalance, setFormattedBalance] = useState(0)
+    const [formattedBalance, setFormattedBalance] = useState<any>(0)
     const [total, setTotal] = useState<number>(amountToMint * price)
 
     useEffect(()=>setBalance(data),[data])
