@@ -7,7 +7,7 @@ export default function NavBar() {
   const { address, isConnected } = useAccount()
   const ensName = useEnsName({address});
   const [connectState, setConnectState] = useState(false)
-  const [addy, setAddy] = useState(null)
+  const [addy, setAddy] = useState<string>()
   const [currenPath, setCurrentPath] = useState<string>()
 
   useEffect(()=>setAddy(address),[address])
