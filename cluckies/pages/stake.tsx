@@ -8,9 +8,9 @@ import { RightIcon, LeftIcon } from "../components/icons"
 
 export default function Stake() {
     const { address, isConnected } = useAccount()
-    const [add, setAdd] = useState(null)
+    const [add, setAdd] = useState<string>()
     const { data } = useBalance({ address, token:'0xD13cfD3133239a3c73a9E535A5c4DadEE36b395c' })
-    const [balance, setBalance] = useState(null)
+    const [balance, setBalance] = useState<any>()
     const [currentEgg, setCurrentEgg] = useState<number>(0)
     const [previousEgg, setPreviousEgg] = useState<number>(0)
     const [nextEgg, setNextEgg] = useState<number>(0)

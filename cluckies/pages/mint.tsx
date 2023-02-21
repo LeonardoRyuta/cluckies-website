@@ -6,9 +6,9 @@ import { NavBar, Icons } from "../components"
 
 export default function Mint() {
     const { address, isConnected } = useAccount()
-    const [add, setAdd] = useState(null)
+    const [add, setAdd] = useState<string>()
     const { data } = useBalance({ address })
-    const [balance, setBalance] = useState(null)
+    const [balance, setBalance] = useState<any>()
     const [amountToMint, setAmountToMint] = useState(1)
     const price = 42 //CANTO
     const supply = 4200
