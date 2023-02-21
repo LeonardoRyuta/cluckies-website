@@ -1,0 +1,77 @@
+.fullPage {
+    background-image: url('/bg1.png');
+    height: 100vh;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.mintWrapper {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mintContainer {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    border: 2px solid black;
+    border-radius: 20px;
+    background-color: #faead6;
+    padding: 1rem;
+    color: black;
+    font-size: 32px;
+    gap: 2rem;
+}
+
+.imageWrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mintButtonWrapper {
+
+}
+
+.mintButton {
+    color: black;
+    font-family: 'Pixel';
+    font-size: 2rem;
+    width: 100%;
+    height: 3rem;
+    border-radius: 50px;
+    border-color: black;
+    background: #faead6;
+    cursor: pointer;
+}
+
+.mintButton:active {
+    background: #bbafa0;
+}
+
+.mintSelector {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    user-select: none;
+}
+
+.mintSelector > div {
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0.5rem;
+}
+
