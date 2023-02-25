@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
+  reactStrictMode: false,
   env: {
     ALCHEMY_API_KEY:'rgUHJ0vFgXlsf8LN6-3pFn-NZQxEnV5J'
   }

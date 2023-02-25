@@ -67,18 +67,7 @@ export default function Stake() {
 
                 <div className={styles.eggCarouselContainer}>
                     <div className={styles.eggCarousel} style={{transform:`translateX(${eggsXPos}px)`}}>
-                        {
-                             mockInventory.map((egg, index)=>{
-                                // if (index > mockInventory.length-4) {
-                                    return(
-                                        <div className={styles.eggContainer} key={index}>
-                                            <img src={egg.eggImg} alt='egg' width={200} height={200}/>
-                                        </div>
-                                    )
-                                // }
-                            })
-                        }
-                        {
+                        {/* {
                             mockInventory.map((egg, index)=>{
                                 return(
                                     <div className={styles.eggContainer} key={index}>
@@ -86,7 +75,16 @@ export default function Stake() {
                                     </div>
                                 )
                             })
-                        }
+                        } */}
+                        <div className={styles.eggContainer}>
+                            <img src={mockInventory[previousEgg].eggImg} alt='egg' width={200} height={200}/>
+                        </div>
+                        <div className={styles.eggContainer}>
+                            <img src={mockInventory[currentEgg].eggImg} alt='egg' width={200} height={200}/>
+                        </div>
+                        <div className={styles.eggContainer}>
+                            <img src={mockInventory[nextEgg].eggImg} alt='egg' width={200} height={200}/>
+                        </div>
                     </div>
                 </div>
 
