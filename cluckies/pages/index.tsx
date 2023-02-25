@@ -119,7 +119,7 @@ export default function Home() {
         {
           isLoading?
           <div className={styles.loading}>
-            LoAdInG...
+            Loading...
           </div>
           :
           <>
