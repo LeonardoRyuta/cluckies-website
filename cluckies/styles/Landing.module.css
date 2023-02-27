@@ -13,6 +13,14 @@
     background-repeat: no-repeat;
 }
 
+.backgroundImgP1 {
+    background-image: url('/LandingPageAssets/Page 1/bgP1.png');
+}
+
+.backgroundImgP2 {
+    background-image: url('/LandingPageAssets/Page2/bgP2.png');
+}
+
 .container {
     height: 100%;
     width: 100%;
@@ -20,23 +28,31 @@
     justify-content: flex-end;
     align-items: flex-start;
     flex-direction: column;
-    margin: calc((100vh/1080)*120) 0;
+    margin: calc((100vh/1080)*140) 0;
 }
 
 .cluckie {
     width: 10%;
+    transition: transform 0.1s ease-out;
 }
 
 .redEyes {
     position: absolute;
     height: 100vh;
     width: 100vw;
-    background-image: url('/LandingPageAssets/Page 1/EyesPage1.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     z-index: 10;
     animation: blink 5s infinite ease-in-out;
+}
+
+.eyesP1 {
+    background-image: url('/LandingPageAssets/Page 1/EyesPage1.png');
+}
+
+.eyesP2 {
+    background-image: url('/LandingPageAssets/Page2/EyesPage2.png');
 }
 
 @keyframes blink {

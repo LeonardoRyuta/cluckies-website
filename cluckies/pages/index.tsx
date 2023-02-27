@@ -8,9 +8,9 @@ import { useEffect, useState } from 'react'
 export default function Home() {
   const router = useRouter()
   const [xPos, setX] = useState<number>(0)
-  const [bgUrl, setBgUrl] = useState<string>('backgroundP1.png')
-  const b1 = 'backgroundP1.png'
-  const b2 = 'backgroundP2.png'
+  const b1 = `${styles.backgroundImgP1}`
+  const b2 = `${styles.backgroundImgP2}`
+  const [bgImg, setBgImg] = useState<string>(b1)
   const [walkingState, setWalkingState] = useState<number>(0)
   const [idleState, setIdleState] = useState<number>(0)
   const [rotateY, setRotateY] = useState<number>(0)
@@ -18,6 +18,7 @@ export default function Home() {
   let walkingTimeout: any;
   const [isWalking, setIsWalking] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(false)
+  const [redEyes, setRedEyes] = useState<string>(`${styles.eyesP1}`)
 
   const moveCluckie = (e: any) => {
     setIsWalking(true)
@@ -30,25 +31,27 @@ export default function Home() {
     }
 
     if (xPos > document.body.clientWidth) {
-      if ( bgUrl === b1) {
-        setBgUrl(b2)
+      if ( bgImg === b1) {
+        setBgImg(b2)
+        setRedEyes(`${styles.eyesP2}`)
         setX(0)
       }
     }
 
     if (xPos >= document.body.clientWidth-100) {
-      if (bgUrl === b2) {
+      if (bgImg === b2) {
         setIsLoading(true)
         router.push('/mint')
       }
     }
 
     if (xPos < 0) {
-      if ( bgUrl === b1) {
+      if ( bgImg === b1) {
         setX(0)
       } else 
-      if (bgUrl === b2) {
-        setBgUrl(b1)
+      if (bgImg === b2) {
+        setBgImg(b1)
+        setRedEyes(`${styles.eyesP1}`)
         setX(document.body.clientWidth)
       }
     }
@@ -106,7 +109,6 @@ export default function Home() {
 
   walkingTimeout = setTimeout(walkCluckie, 100)
   
-
   return (
     <>
       <Head>
@@ -115,7 +117,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div className={styles.main} id='main' style={{backgroundImage: `url(${bgUrl})`}}>
+      <div className={`${styles.main} ${bgImg}`} id='main'>
         {
           isLoading?
           <div className={styles.loading}>
@@ -123,7 +125,8 @@ export default function Home() {
           </div>
           :
           <>
-            <div className={styles.redEyes}></div>
+            <div className={`${styles.redEyes} ${redEyes}`} 
+            ></div>
             <div className={styles.container}>
               <img className={styles.cluckie}
                 style={{
