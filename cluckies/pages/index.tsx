@@ -19,15 +19,18 @@ export default function Home() {
   const [isWalking, setIsWalking] = useState<boolean>(false)
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [redEyes, setRedEyes] = useState<string>(`${styles.eyesP1}`)
+  const [started, setStarted] = useState<boolean>(false)
 
   const moveCluckie = (e: any) => {
     setIsWalking(true)
     if (e.key === 'ArrowRight' || e.key === 'd') {
       setRotateY(0)
       setX(xPos + 10)
+      setStarted(true)
     } else if (e.key === 'ArrowLeft' || e.key === 'a') {
       setRotateY(180)
       setX(xPos - 10)
+      setStarted(true)
     }
 
     if (xPos > document.body.clientWidth) {
@@ -41,7 +44,8 @@ export default function Home() {
     if (xPos >= document.body.clientWidth-100) {
       if (bgImg === b2) {
         setIsLoading(true)
-        router.push('/mint')
+        setBgImg('')
+        setTimeout(()=>router.push('/mint'), 1000)
       }
     }
 
@@ -125,16 +129,29 @@ export default function Home() {
           </div>
           :
           <>
+            {
+              !started?
+              <div className={styles.instructionsContainer}>
+                Use ad or the right and left arrow keys to move
+              </div>
+              :
+              null
+            }
             <div className={`${styles.redEyes} ${redEyes}`} 
             ></div>
             <div className={styles.container}>
-              <img className={styles.cluckie}
+              <img 
+                className={styles.cluckie}
                 style={{
-                  transform:`translateX(${xPos}px) rotateY(${rotateY}deg)`,
+                  transform:`translateX(${xPos}px) translateY(1rem) rotateY(${rotateY}deg)`,
                 }}
                 id='cluckie'
                 src={`LandingPageAssets/Cluckie/${cluckieSrc}.png`}
-            />
+              />
+              <img
+                className={styles.land}
+                src={`LandingPageAssets/Land.png`}
+              />
             </div>
           </>
         }
