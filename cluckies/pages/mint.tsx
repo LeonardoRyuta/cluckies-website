@@ -14,6 +14,7 @@ export default function Mint() {
     const supply = 4200
     const [formattedBalance, setFormattedBalance] = useState<any>(0)
     const [total, setTotal] = useState<number>(amountToMint * price)
+    const [buttonSrc, setButtonSrc] = useState('/mintButton.png')
 
     useEffect(()=>setBalance(data),[data])
     useEffect(()=>setAdd(address),[address])
@@ -33,7 +34,8 @@ export default function Mint() {
     return (
         <div className={styles.fullPage}>
             <NavBar/>
-            <div>
+            <div className={styles.flashBang}></div>
+            {/* <div>
                 <div className={styles.mintWrapper}>
                     <div className={styles.mintContainer}>
                         <div className={styles.imageWrapper}>
@@ -69,6 +71,29 @@ export default function Mint() {
                             <button className={styles.mintButton}>MINT</button>
                         </div>
                     </div>
+                </div>
+            </div> */}
+            <div className={styles.mintWrapper}>
+                <div className={styles.mintContainer}>
+                    <div className={styles.mintInfo}>
+                        <p>
+                            Balance: {parseFloat(formattedBalance).toFixed(3)} {balance?.symbol}
+                        </p>
+                        <p>
+                            Price: {price} CANTO
+                        </p>
+                        <p>
+                            Supply: {supply}/{supply} Cluckies
+                        </p>
+                    </div>
+                    <Image src={`/MintingPageAssets/Button And Board${buttonSrc}`} 
+                        alt='mintbutton' 
+                        width='240' 
+                        height='240' 
+                        className={styles.mintButton}
+                        onMouseDown={()=>setButtonSrc('/idleButton.png')}
+                        onMouseUp={()=>setButtonSrc('/mintButton.png')}
+                    />
                 </div>
             </div>
         </div>

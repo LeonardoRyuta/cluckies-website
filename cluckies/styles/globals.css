@@ -102,6 +102,10 @@ a {
   }
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+
 @font-face {
   font-family: 'Pixel';
   src: url(../public/ChronoType.ttf);

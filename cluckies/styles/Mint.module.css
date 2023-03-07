@@ -1,10 +1,11 @@
 .fullPage {
-    background-image: url('/bg1.png');
+    background-image: url('/MintingPageAssets/idle.gif');
     height: 100vh;
     overflow: hidden;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    image-rendering: pixelated;
 }
 
 .mintWrapper {
@@ -22,13 +23,18 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: 2px solid black;
-    border-radius: 20px;
-    background-color: #faead6;
     padding: 1rem;
     color: black;
     font-size: 32px;
     gap: 2rem;
+    background-image: url('/MintingPageAssets/Button And Board/board.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0;
+    animation: flashbangReverse 1s 1s linear forwards;
+    image-rendering: pixelated;
+    text-align: center;
 }
 
 .imageWrapper {
@@ -43,19 +49,14 @@
 }
 
 .mintButton {
-    color: black;
-    font-family: 'Pixel';
-    font-size: 2rem;
-    width: 100%;
     height: 3rem;
-    border-radius: 50px;
-    border-color: black;
-    background: #faead6;
+    width: auto;
+    image-rendering: pixelated;
     cursor: pointer;
 }
 
-.mintButton:active {
-    background: #bbafa0;
+.mintButton:hover {
+
 }
 
 .mintSelector {
@@ -75,3 +76,30 @@
     padding: 0.5rem;
 }
 
+.flashBang {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    animation: flashBang 1s linear forwards;
+}
+
+@keyframes flashBang {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }    
+}
+
+@keyframes flashbangReverse {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }    
+}

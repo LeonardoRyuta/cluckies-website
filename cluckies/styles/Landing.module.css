@@ -11,6 +11,7 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+    overflow: hidden;
 }
 
 .backgroundImgP1 {
@@ -28,6 +29,7 @@
     grid-template-rows: 1fr auto;
     align-items: end;
     z-index: 1;
+    overflow: hidden;
 }
 
 .cluckie {
@@ -84,4 +86,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.page3Video {
+    position: absolute;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    image-rendering: pixelated;
 }

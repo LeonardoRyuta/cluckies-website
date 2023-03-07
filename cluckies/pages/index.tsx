@@ -45,7 +45,6 @@ export default function Home() {
       if (bgImg === b2) {
         setIsLoading(true)
         setBgImg('')
-        setTimeout(()=>router.push('/mint'), 1000)
       }
     }
 
@@ -112,7 +111,7 @@ export default function Home() {
   }, [])
 
   walkingTimeout = setTimeout(walkCluckie, 100)
-  
+
   return (
     <>
       <Head>
@@ -124,9 +123,11 @@ export default function Home() {
       <div className={`${styles.main} ${bgImg}`} id='main'>
         {
           isLoading?
-          <div className={styles.loading}>
-            Loading...
-          </div>
+          <video className={styles.page3Video} id='video' 
+            autoPlay 
+          onEnded={()=>{router.push('/mint')}}>
+            <source src="/LandingPageAssets/Page 3/page3Animation.mp4" type="video/mp4" />
+          </video>
           :
           <>
             {
