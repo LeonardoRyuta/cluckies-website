@@ -20,16 +20,17 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState<boolean>(false)
   const [redEyes, setRedEyes] = useState<string>(`${styles.eyesP1}`)
   const [started, setStarted] = useState<boolean>(false)
+  const [transitionState, setTransitionState] = useState<string>('transform')
 
   const moveCluckie = (e: any) => {
     setIsWalking(true)
     if (e.key === 'ArrowRight' || e.key === 'd') {
       setRotateY(0)
-      setX(xPos + 10)
+      setX(xPos + 15)
       setStarted(true)
     } else if (e.key === 'ArrowLeft' || e.key === 'a') {
       setRotateY(180)
-      setX(xPos - 10)
+      setX(xPos - 15)
       setStarted(true)
     }
 
@@ -37,6 +38,7 @@ export default function Home() {
       if ( bgImg === b1) {
         setBgImg(b2)
         setRedEyes(`${styles.eyesP2}`)
+        setTransitionState('none')
         setX(0)
       }
     }
@@ -99,6 +101,7 @@ export default function Home() {
   }
 
   useEffect(() => {
+    setTransitionState('transform')
     document.addEventListener('keydown', moveCluckie)
     return () => {
       document.removeEventListener('keydown', moveCluckie)
@@ -110,7 +113,7 @@ export default function Home() {
     document.addEventListener('keyup', ()=>{setIsWalking(false)})
   }, [])
 
-  walkingTimeout = setTimeout(walkCluckie, 100)
+  walkingTimeout = setTimeout(walkCluckie, 75)
 
   return (
     <>
@@ -133,7 +136,7 @@ export default function Home() {
             {
               !started?
               <div className={styles.instructionsContainer}>
-                Use ad or the right and left arrow keys to move
+                Use A&D or the right and left arrow keys to move
               </div>
               :
               null
@@ -145,6 +148,7 @@ export default function Home() {
                 className={styles.cluckie}
                 style={{
                   transform:`translateX(${xPos}px) translateY(1rem) rotateY(${rotateY}deg)`,
+                  transition: `${transitionState} 0.1s ease-out`
                 }}
                 id='cluckie'
                 src={`LandingPageAssets/Cluckie/${cluckieSrc}.png`}
