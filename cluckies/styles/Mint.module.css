@@ -8,6 +8,54 @@
     image-rendering: pixelated;
 }
 
+.trollPage1{
+    background-image: url('/MintingPageAssets/TrollPages/1.gif');
+    height: 100vh;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    image-rendering: pixelated;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    flex-direction: column;
+}
+
+.trollPage2{
+    background-image: url('/MintingPageAssets/TrollPages/2.gif');
+    height: 100vh;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    image-rendering: pixelated;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    flex-direction: column;
+}
+
+.goBackButton {
+    height: 3rem;
+    width: auto;
+    image-rendering: pixelated;
+    cursor: pointer;
+    font-family: "Pixel";
+    background-color: transparent;
+    border: 2px solid white;
+    font-size: 32px;
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+
+.goBackButton:active {
+    background-color: white;
+    color: black;
+}
+
 .mintWrapper {
     height: 100%;
     width: 100%;
@@ -92,6 +140,7 @@
     }
     100% {
         opacity: 0;
+        z-index: -1;
     }    
 }
 
@@ -113,4 +162,14 @@
     top: 50%;  
     left: 50%; 
     transform: translate(-50%, -50%);
+}
+
+.loadingScreen {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
 }

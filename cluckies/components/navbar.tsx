@@ -1,5 +1,4 @@
-import { use, useEffect, useState } from 'react'
-import Image from 'next/image'
+import { useEffect, useState } from 'react'
 import { useAccount, useConnect, useDisconnect, useEnsName } from 'wagmi'
 import { InjectedConnector } from 'wagmi/connectors/injected'
 
@@ -19,8 +18,7 @@ export default function NavBar() {
 
   const pageList = [
     ['Home', '/'],
-    ['Mint', '/mint'],
-    ['Stake', '/stake'],
+    ['Mint', '/mint']
   ]
 
   const { connect } = useConnect({
