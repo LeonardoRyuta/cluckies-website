@@ -1,5 +1,7 @@
-import Nfts from "./nfts";
+import patchMethod from "./Patch";
+import getMethod from "./Get";
 
 export {
-    Nfts,
+    getMethod,
+    patchMethod
 };

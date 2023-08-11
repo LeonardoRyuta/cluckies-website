@@ -1,10 +1,59 @@
 .fullPage {
-    background-image: url('/bg1.png');
+    background-image: url('/MintingPageAssets/idle.gif');
     height: 100vh;
     overflow: hidden;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    image-rendering: pixelated;
+}
+
+.trollPage1{
+    background-image: url('/MintingPageAssets/TrollPages/1.gif');
+    height: 100vh;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    image-rendering: pixelated;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    flex-direction: column;
+}
+
+.trollPage2{
+    background-image: url('/MintingPageAssets/TrollPages/2.gif');
+    height: 100vh;
+    overflow: hidden;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    image-rendering: pixelated;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32px;
+    flex-direction: column;
+}
+
+.goBackButton {
+    height: 3rem;
+    width: auto;
+    image-rendering: pixelated;
+    cursor: pointer;
+    font-family: "Pixel";
+    background-color: transparent;
+    border: 2px solid white;
+    font-size: 32px;
+    margin: 0.5rem;
+    padding: 0.5rem;
+}
+
+.goBackButton:active {
+    background-color: white;
+    color: black;
 }
 
 .mintWrapper {
@@ -22,13 +71,18 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    border: 2px solid black;
-    border-radius: 20px;
-    background-color: #faead6;
     padding: 1rem;
     color: black;
     font-size: 32px;
     gap: 2rem;
+    background-image: url('/MintingPageAssets/Button And Board/board.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    opacity: 0;
+    animation: flashbangReverse 1s 1s linear forwards;
+    image-rendering: pixelated;
+    text-align: center;
 }
 
 .imageWrapper {
@@ -43,19 +97,14 @@
 }
 
 .mintButton {
-    color: black;
-    font-family: 'Pixel';
-    font-size: 2rem;
-    width: 100%;
     height: 3rem;
-    border-radius: 50px;
-    border-color: black;
-    background: #faead6;
+    width: auto;
+    image-rendering: pixelated;
     cursor: pointer;
 }
 
-.mintButton:active {
-    background: #bbafa0;
+.mintButton:hover {
+
 }
 
 .mintSelector {
@@ -75,3 +124,52 @@
     padding: 0.5rem;
 }
 
+.flashBang {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    animation: flashBang 1s linear forwards;
+}
+
+@keyframes flashBang {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        z-index: -1;
+    }    
+}
+
+@keyframes flashbangReverse {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }    
+}
+
+.afterMintAnimation {
+    position: absolute;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+    image-rendering: pixelated;
+    top: 50%;  
+    left: 50%; 
+    transform: translate(-50%, -50%);
+}
+
+.loadingScreen {
+    width: 100vw;
+    height: 100vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: large;
+}
