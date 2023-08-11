@@ -16,7 +16,7 @@ export default async function handler(req : NextApiRequest, res : NextApiRespons
     }
 
     const imageBuffer = await response.buffer();
-    const contentType = response.headers.get('content-type');
+    const contentType = response.headers.get('content-type') as string;
 
     if (tokenData!=null) {
         switch (req.method) {
