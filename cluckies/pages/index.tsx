@@ -20,7 +20,7 @@ export default function Home() {
     }
 
     useEffect(() => {
-        const txt = 'Welcome traveler, please click on the book to enter the story'
+        const txt = 'Welcome traveler, click on the button to begin your journey.'
         typeWriter(txt, 0)
     }, [])
 
