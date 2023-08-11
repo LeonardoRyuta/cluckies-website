@@ -17,8 +17,7 @@ export default function NavBar() {
   },[])
 
   const pageList = [
-    ['Home', '/'],
-    ['Mint', '/mint']
+    ['Home', '/']
   ]
 
   const { connect } = useConnect({
