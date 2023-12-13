@@ -85,6 +85,25 @@
     text-align: center;
 }
 
+.mintInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: black;
+    text-align: center;
+    image-rendering: pixelated;
+}
+
+.mintInfo > div > button {
+    color: black;
+    font-size: 32px;
+    margin: 0 1rem;
+    background-color: #f0e8af;
+    border-radius: 0.5rem;
+    padding: 0 1rem;
+}
+
 .imageWrapper {
     width: 100%;
     display: flex;

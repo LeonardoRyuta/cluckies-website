@@ -20,10 +20,44 @@ export default function Mint() {
     const [total, setTotal] = useState<number>(amountToMint * price)
     const [buttonSrc, setButtonSrc] = useState('/mintButton.png')
     const [hasMinted, setHasMinted] = useState(false);
+<<<<<<< Updated upstream
+=======
+    const [provider, setProvider] = useState<any>()
+    const [signer, setSigner] = useState<any>()
+    const [contract, setContract] = useState<any>()
+    const [currentSupply, setCurrentSupply] = useState<number>(0)
+    const [userMinted, setUserMinted] = useState<number>(0)
+>>>>>>> Stashed changes
 
     useEffect(() => {
       setHasMinted(false);
     }, []);
+<<<<<<< Updated upstream
+=======
+
+    useEffect(() => {
+        if (provider) {
+            setSigner(provider.getSigner());
+        }
+    }, [provider]);
+
+    useEffect(() => {
+        if (signer) {
+            setContract(new ethers.Contract('0x40C348d97BA9A421b4d87B6a62309206c95323E5', ABI, signer));
+        }
+    }, [signer]);
+
+    useEffect(() => {
+        if (contract) {
+            contract.totalSupply().then((supply: any) => {
+                setCurrentSupply(supply.toNumber())
+            })
+            contract.userBalance(address).then((balance: any) => {
+                setUserMinted(balance.toNumber())
+            })
+        }
+    }, [contract]);
+>>>>>>> Stashed changes
     
     useEffect(()=>{
         setIsLoading(false)
@@ -33,14 +67,26 @@ export default function Mint() {
     useEffect(()=>setFormattedBalance(balance?.formatted),[balance])
 
     const changeAmountToMint = (num:number) => {
-        if(amountToMint + num > 0 && amountToMint + num <= 10){
+        if(amountToMint + num > 0 && amountToMint + num <= 3){
             setAmountToMint(amountToMint + num)
             setTotal((amountToMint + num) * price)
         }
     }
 
+<<<<<<< Updated upstream
     const mint = () => {
         setHasMinted(true)
+=======
+    const mint = async () => {
+        const mint1 = await contract?.mint(amountToMint, {value: ethers.utils.parseEther((amountToMint * price).toString())}).catch((err: any) => {
+            console.log(err);
+        });
+        provider.once(mint1?.hash, (receipt: any) => {
+            console.log(receipt);
+            setHasMinted(true)
+        });
+        // setHasMinted(true)
+>>>>>>> Stashed changes
     }
 
     return (
@@ -69,18 +115,36 @@ export default function Mint() {
                                                     Price: {price} ETH
                                                 </p>
                                                 <p>
-                                                    Supply: {supply}/{supply} Cluckies
+                                                    Minted: {currentSupply}/{supply} Cluckies
                                                 </p>
+                                                <div style={{display:"flex", direction:"row", alignItems:"center"}}>
+                                                    <button className={styles.amountButton} onClick={()=>changeAmountToMint(-1)}>
+                                                        -
+                                                    </button>
+                                                    <p className={styles.amount}>
+                                                        {amountToMint}
+                                                    </p>
+                                                    <button className={styles.amountButton} onClick={()=>changeAmountToMint(1)}>
+                                                        +
+                                                    </button>
+                                                </div>
                                             </div>
-                                            <img src={`/MintingPageAssets/Button And Board${buttonSrc}`} 
-                                                alt='mintbutton' 
-                                                width='240' 
-                                                height='240' 
-                                                className={styles.mintButton}
-                                                onMouseDown={()=>setButtonSrc('/idleButton.png')}
-                                                onMouseUp={()=>setButtonSrc('/mintButton.png')}
-                                                onClick={()=>mint()}
-                                            />
+                                            {
+                                                    userMinted >= 3?
+                                                        <p>
+                                                            You have minted the max amount of 3 Cluckies
+                                                        </p>
+                                                    :
+                                                        <img src={`/MintingPageAssets/Button And Board${buttonSrc}`} 
+                                                            alt='mintbutton' 
+                                                            width='240' 
+                                                            height='240' 
+                                                            className={styles.mintButton}
+                                                            onMouseDown={()=>setButtonSrc('/idleButton.png')}
+                                                            onMouseUp={()=>setButtonSrc('/mintButton.png')}
+                                                            onClick={()=>mint()}
+                                                        />
+                                            }
                                         </div>
                                     </div>           
                             }
